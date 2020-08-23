@@ -2,7 +2,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: taha
+  username: postgres
   password: trytofindme288741
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
