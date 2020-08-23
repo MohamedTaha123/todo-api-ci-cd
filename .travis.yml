@@ -2,9 +2,10 @@ language: ruby
 dist: trusty
 rvm:
   - 2.5.1
+services:
+  - postgresql
 before_install: gem install bundler --pre
 before_script:
-  - cp config/database.travis.yml config/database.yml
   - psql -c 'create database myapp_test;' -U postgres
 script:
   - bundle exec rails db:create
