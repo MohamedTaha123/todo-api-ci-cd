@@ -1,5 +1,5 @@
-https://travis-ci.org/MohamedTaha123/todo-api-ci-cd.svg?branch=master
-
+[![Build Status](https://travis-ci.org/MohamedTaha123/todo-api-ci-cd.svg?branch=master)](https://travis-ci.org/github/MohamedTaha123/todo-api-ci-cd)
+<br />
 ##### Prerequisites
 
 The setups steps expect following tools installed on the system.
