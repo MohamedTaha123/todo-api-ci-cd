@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'home/index'
+  	get 'home/index'
 	resources :todos do 
 		resources :items
 	end
