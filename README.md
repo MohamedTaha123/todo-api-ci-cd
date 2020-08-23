@@ -1,3 +1,5 @@
+https://travis-ci.org/MohamedTaha123/todo-api-ci-cd.svg?branch=master
+
 ##### Prerequisites
 
 The setups steps expect following tools installed on the system.
