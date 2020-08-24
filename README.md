@@ -47,4 +47,5 @@ You can start the tests using the command given below.
 ```ruby
 bundle exec rspec 
 ```
-
+#### 6. Live Example (Heroku)
+you can visit https://ancient-castle-82336.herokuapp.com
