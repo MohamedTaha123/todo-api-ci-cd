@@ -5,8 +5,6 @@ rvm:
 services:
   - postgresql
 before_install: gem install bundler --pre
-before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
 script:
   - bundle exec rails db:create
   - bundle exec rails db:migrate
