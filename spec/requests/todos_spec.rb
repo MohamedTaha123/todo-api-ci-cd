@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe 'Todos API', type: :request do
-  # initialize test data 
+  # initialize test data
   let(:user) { create(:user) }
-  let!(:todos) { create_list(:todo, 10,created_by: user.id) }
+  let!(:todos) { create_list(:todo, 10, created_by: user.id) }
   let(:todo_id) { todos.first.id }
 
   # authorize request
@@ -103,7 +103,7 @@ RSpec.describe 'Todos API', type: :request do
 
   # Test suite for DELETE /todos/:id
   describe 'DELETE /todos/:id' do
-    before { delete "/todos/#{todo_id}",params: {}, headers: headers }
+    before { delete "/todos/#{todo_id}", params: {}, headers: headers }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)

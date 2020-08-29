@@ -7,7 +7,7 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 
 # Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 begin
@@ -32,13 +32,12 @@ RSpec.configure do |config|
   config.include RequestSpecHelper
   config.include ControllerSpecHelper
 
-
   config.infer_spec_type_from_file_location!
 
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
   config.include FactoryBot::Syntax::Methods
-   # start by truncating all the tables but then use the faster transaction strategy the rest of the time.
+  # start by truncating all the tables but then use the faster transaction strategy the rest of the time.
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
     DatabaseCleaner.strategy = :transaction
@@ -50,5 +49,4 @@ RSpec.configure do |config|
       example.run
     end
   end
-  
 end

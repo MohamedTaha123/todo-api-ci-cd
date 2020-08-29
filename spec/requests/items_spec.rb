@@ -1,39 +1,39 @@
 require 'rails_helper'
 
 RSpec.describe 'Items API' do
-	# Initialize the test data
+  # Initialize the test data
   let(:user) { create(:user) }
-	let!(:todo) { create(:todo) }
-	let!(:items) { create_list(:item, 20, todo_id: todo.id)  }
-	let(:todo_id) { todo.id }
+  let!(:todo) { create(:todo) }
+  let!(:items) { create_list(:item, 20, todo_id: todo.id) }
+  let(:todo_id) { todo.id }
   let(:id) { items.first.id }
   let(:headers) { valid_headers }
-  	# Test suite for GET /todos/:todo_id/items
-  	describe 'GET /todos/:todo_id/items' do
-  		before { get "/todos/#{todo_id}/items" ,params: {}, headers: headers}
+  # Test suite for GET /todos/:todo_id/items
+  describe 'GET /todos/:todo_id/items' do
+    before { get "/todos/#{todo_id}/items", params: {}, headers: headers }
 
-  	  	context 'when todo exists' do
-	     	it 'returns status code 200' do
-	        	expect(response).to have_http_status(200)
-	      	end
+    context 'when todo exists' do
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
 
-	      	it 'returns all todo items' do
-	        	expect(JSON.parse(response.body).size).to eq(20)
-	      	end
-      	end
-      	context 'when todos dont exist' do
-      		let(:todo_id) { 0 }
-      		it 'returns status code 404' do
-      			expect(response).to have_http_status(404)
-      		end
-      		it 'returns not found message' do
-      			expect(response.body).to match("{\"message\":\"Couldn't find Todo with 'id'=0\"}" )
-      		end
-      	end
-  	end
-  	# Test suite for GET /todos/:todo_id/items/:id
+      it 'returns all todo items' do
+        expect(JSON.parse(response.body).size).to eq(20)
+      end
+    end
+    context 'when todos dont exist' do
+      let(:todo_id) { 0 }
+      it 'returns status code 404' do
+        expect(response).to have_http_status(404)
+      end
+      it 'returns not found message' do
+        expect(response.body).to match("{\"message\":\"Couldn't find Todo with 'id'=0\"}")
+      end
+    end
+  end
+  # Test suite for GET /todos/:todo_id/items/:id
   describe 'GET /todos/:todo_id/items/:id' do
-    before { get "/todos/#{todo_id}/items/#{id}",params: {}, headers: headers }
+    before { get "/todos/#{todo_id}/items/#{id}", params: {}, headers: headers }
 
     context 'when todo item exists' do
       it 'returns status code 200' do
@@ -71,7 +71,7 @@ RSpec.describe 'Items API' do
     end
 
     context 'when an invalid request' do
-      before { post "/todos/#{todo_id}/items", params: {} , headers: headers}
+      before { post "/todos/#{todo_id}/items", params: {}, headers: headers }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)

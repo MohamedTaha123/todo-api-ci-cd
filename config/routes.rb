@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  	get 'home/index'
-  	scope module: :v1 , constraints: ApiVersion.new('v1', true) do 
-  		resources :todos do 
-		resources :items
-		end
-  	end
+  get 'home/index'
+  scope module: :v1, constraints: ApiVersion.new('v1', true) do
+    resources :todos do
+      resources :items
+    end
+  end
 
-	post 'auth/login', to: 'authentication#authenticate'
-	post 'signup', to: 'users#create'
+  post 'auth/login', to: 'authentication#authenticate'
+  post 'signup', to: 'users#create'
 end
