@@ -4,6 +4,6 @@ RSpec.describe Todo, type: :model do
   it { should have_many(:items).dependent(:destroy) }
   it { should validate_presence_of(:title) }
   it { should validate_presence_of(:created_by) }
-  it { should allow_value('todo').for(:todo) }
-  it { should_not allow_value('todo111').for(:todo) }
+  it { should allow_value('todo').for(:title) }
+  it { should_not allow_value('todo111').for(:title) }
 end
