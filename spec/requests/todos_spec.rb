@@ -56,13 +56,13 @@ RSpec.describe 'Todos API', type: :request do
   # Test suite for POST /todos
   describe 'POST /todos' do
     # valid payload
-    let(:valid_attributes) { { title: 'Learn Elm', created_by: user.id.to_s }.to_json }
+    let(:valid_attributes) { { title: 'LearnElm', created_by: user.id.to_s }.to_json }
 
     context 'when the request is valid' do
       before { post '/todos', params: valid_attributes, headers: headers }
 
       it 'creates a todo' do
-        expect(JSON.parse(body)['title']).to eq('Learn Elm')
+        expect(JSON.parse(body)['title']).to eq('LearnElm')
       end
 
       it 'returns status code 201' do
@@ -79,7 +79,7 @@ RSpec.describe 'Todos API', type: :request do
 
       it 'returns a validation failure message' do
         expect(response.body)
-          .to match("{\"message\":\"Validation failed: Title can't be blank\"}")
+          .to match("{\"message\":\"Validation failed: Title can't be blank, Title only allows letters\"}")
       end
     end
   end
